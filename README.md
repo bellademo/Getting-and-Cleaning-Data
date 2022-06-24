@@ -4,6 +4,7 @@ This is a repostiory for the Getting and Cleaning Data Project using the followi
   http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
   
 Contains:
+
   code_book = describes variables, data, and functions
   
   run_analysis.R = shows the data code that performs the required actions
