@@ -1,0 +1,42 @@
+The Run_Analysis.R Script manipulates and cleans the data for the UCI HAR Dataset.
+It performs the following actions:
+  1. Downloads the dataset
+    Extracts the UCI HAR Dataset
+  
+  2. Assign the data to the corresponding variables
+    features <- "UCI HAR Dataset/features.txt"
+    activities <- "UCI HAR Dataset/activity_labels.txt"
+    subject_test <- "UCI HAR Dataset/test/subject_test.txt"
+    x_test <- "UCI HAR Dataset/test/X_test.txt"
+    y_test <- "UCI HAR Dataset/test/y_test.txt"
+    subject_train <- "UCI HAR Dataset/train/subject_train.txt"
+    x_train <- "UCI HAR Dataset/train/X_train.txt"
+    y_train <- "UCI HAR Dataset/train/y_train.txt"
+    
+  3. Merge the data sets
+    x_df <- merge x_train and x_test by rbind()
+    y_df <- merge y_train and y_test by rbind()
+    subject <- merge subject_train and subject_test by rbind()
+    merge_df <- merge subject, y_df, and x_df by cbind()
+    
+  4. Extract the mean and standard deviation
+    tidy_df <- subset merge_df and select columns: subject, code and the
+    means and SDs for them
+    
+  5. Re-Label with descriptive names
+    "Acc" to "Acceleromter"
+    "Gyro" to "Gyroscope"
+    "BodyBody" to "Body"
+    "Mag" to "Magnitude"
+    "^t" to "Time"
+    "^f" to "Frequency"
+    "tBody" to "TimeBody"
+    "-mean()" to "Mean"
+    "-std()" to "STD"
+    "-freq()" to "Frequency"
+    "angle" to "Angle"
+    "gravity" to "Gravity"
+    
+  6. Create independent tidy data set with average for each activity and each subject
+    final_df <- summarize tidy_df, group by subject and activity, take mean for each 
+    export final_df into a FinalData.txt file
